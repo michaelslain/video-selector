@@ -28,7 +28,7 @@ const createButton = (): void => {
 
 let lastClick = 0
 
-const onClick = (): void => {
+const onClick = async (): Promise<void> => {
     const now = Date.now()
     if (now - lastClick < 5000) return
     lastClick = now
@@ -36,10 +36,12 @@ const onClick = (): void => {
     const links = gatherVideoLinks()
     const titles = gatherVideoTitles()
 
-    gptSelect(titles, links).then(selectedLink => {
-        if (!selectedLink) return
-        window.open(`https://www.youtube.com${selectedLink}`, '_blank')
-    })
+    console.log({ links, titles })
+
+    const selectedLink = await gptSelect(titles, links)
+    if (!selectedLink) return
+
+    window.open(`https://www.youtube.com${selectedLink}`, '_blank')
 }
 
 export default createButton
