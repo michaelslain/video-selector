@@ -39,6 +39,9 @@ const onClick = async (): Promise<void> => {
     console.log({ links, titles })
 
     const selectedLink = await gptSelect(titles, links)
+
+    console.log(selectedLink)
+
     if (!selectedLink) return
 
     window.open(`https://www.youtube.com${selectedLink}`, '_blank')

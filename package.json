@@ -9,10 +9,10 @@
         "dev": "yarn nodemon",
         "build": "rimraf ./build && tsc",
         "start": "yarn run build && node build/index.js",
-        "extension-start": "cd extension && react-scripts start",
-        "extension-build": "cd extension && exteINLINE_RUNTIME_CHUNK=false craco build",
-        "extension-test": "cd extension && react-scripts test",
-        "extension-reject": "cd extension && react-scripts eject"
+        "extension-start": "cd extension && yarn start",
+        "extension-build": "cd extension && yarn build",
+        "extension-test": "cd extension && yarn test",
+        "extension-reject": "cd extension && yarn eject"
     },
     "dependencies": {
         "body-parser": "^1.20.2",
